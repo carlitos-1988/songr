@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>My Albums</title>
+</head>
+<body>
+<h1>My Current Albums </h1>
+
+<!--MR Garvey : "Son of a B**** it is case sensitive!-->
+<h2 th:text="${Smiths.getTitle}"> AlbumName</h2>
+<h2 th:text="${Smiths.getArtist}"></h2>
+<h2 th:text="${Smiths.getSongCount}"></h2>
+<h2 th:text="${Smiths.getLength}"></h2>
+<img src = th:text="${Smiths.getImageUrl} alt="album Image""></img>
+
+<br>
+
+<h2 th:text="${Revolution.getTitle}"> AlbumName</h2>
+<h2 th:text="${Revolution.getArtist}"></h2>
+<h2 th:text="${Revolution.getSongCount}"></h2>
+<h2 th:text="${Revolution.getLength}"></h2>
+<img src = th:text="${Revolution.getImageUrl} alt="album Image""></img>
+
+<br>
+
+<h2 th:text="${NWA.getTitle}"> AlbumName</h2>
+<h2 th:text="${NWA.getArtist}"></h2>
+<h2 th:text="${NWA.getSongCount}"></h2>
+<h2 th:text="${NWA.getLength}"></h2>
+<img src = th:text="${NWA.getImageUrl} alt="album Image""></img>
+
+</body>
+</html>
