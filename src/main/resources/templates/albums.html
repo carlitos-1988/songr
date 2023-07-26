@@ -9,30 +9,57 @@
     <title>My Albums</title>
 </head>
 <body>
+
+<form action="/addAlbum" method="POST">
+    <fieldset>
+        <legend>ADD ALBUM</legend>
+        <label >Album Name:</label>
+        <input type="text" name="title" required><br>
+
+        <label >Artist:</label>
+        <input type="text"  name="artist" required><br>
+
+        <label >Length (in minutes):</label>
+        <input type="text"  name="length" required><br>
+
+        <label >Song Count</label>
+        <input type="text"  name="songCount" required><br>
+
+        <label >Image URL</label>
+        <input type="text"  name="imageUrl" ><br>
+
+        <input type="submit" value="Add Album">
+    </fieldset>
+</form>
+
+
+<form action="/deleteAlbum" method="POST">
+    <label >Enter Album ID To Delete</label>
+    <input type="text"  name="albumDelete" ><br>
+
+    <input type="submit" value="Delete Album">
+</form>
+
 <h1>My Current Albums </h1>
 
+<ul th:each="album : ${albums}">
+    <li th:text="'Album ID: '+ ${album.getId}"></li>
+    <li th:text="'Album Title: '+ ${album.getTitle}"></li>
+    <li th:text="'Album Artist: '+ ${album.getArtist}"></li>
+    <li th:text="'Song Count: '+ ${album.getSongCount}"></li>
+    <li th:text="'Total time: '+ ${album.getLength}"></li>
+    <img href=th:text=${album.getImageUrl} ></img>
+
+</ul>
+
 <!--MR Garvey : "Son of a B**** it is case sensitive!-->
-<h2 th:text="${Smiths.getTitle}"> AlbumName</h2>
-<h2 th:text="${Smiths.getArtist}"></h2>
-<h2 th:text="${Smiths.getSongCount}"></h2>
-<h2 th:text="${Smiths.getLength}"></h2>
-<img src = th:text="${Smiths.getImageUrl} alt="album Image""></img>
+<!--<h2 th:text="${Smiths.getTitle}"> AlbumName</h2>-->
+<!--<h2 th:text="${Smiths.getArtist}"></h2>-->
+<!--<h2 th:text="${Smiths.getSongCount}"></h2>-->
+<!--<h2 th:text="${Smiths.getLength}"></h2>-->
+<!--<img src = th:text="${Smiths.getImageUrl} alt="album Image""></img>-->
 
 <br>
-
-<h2 th:text="${Revolution.getTitle}"> AlbumName</h2>
-<h2 th:text="${Revolution.getArtist}"></h2>
-<h2 th:text="${Revolution.getSongCount}"></h2>
-<h2 th:text="${Revolution.getLength}"></h2>
-<img src = th:text="${Revolution.getImageUrl} alt="album Image""></img>
-
-<br>
-
-<h2 th:text="${NWA.getTitle}"> AlbumName</h2>
-<h2 th:text="${NWA.getArtist}"></h2>
-<h2 th:text="${NWA.getSongCount}"></h2>
-<h2 th:text="${NWA.getLength}"></h2>
-<img src = th:text="${NWA.getImageUrl} alt="album Image""></img>
 
 </body>
 </html>
