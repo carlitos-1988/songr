@@ -3,6 +3,7 @@ package com.songr.songr.controllers;
 
 import com.songr.songr.models.Album;
 import com.songr.songr.repositories.AlbumsRepository;
+import com.songr.songr.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,18 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
 @Controller
-public class HelloController {
+public class AlbumController {
 
     @Autowired
     AlbumsRepository albumsRepository;
 
+    @Autowired
+    SongRepository songRepository;
+
+    @GetMapping("/")
+    public String splashPage() {
+        return "splash.html";
+    }
 
     @GetMapping("/hello")
     public String sayHello(Model m) {
@@ -38,16 +46,17 @@ public class HelloController {
 
     }
 
-    @GetMapping("/")
-    public String splashPage() {
-        return "splash.html";
-    }
+
 
     @GetMapping("/album")
     public String albums(Model m) {
 
         List<Album> myAlbums = albumsRepository.findAll();
         m.addAttribute("albums", myAlbums);
+
+//        List<Song> mySongs = songRepository.findAll();
+//        m.addAttribute("songs", mySongs);
+
 
         return "albums.html";
 
@@ -68,7 +77,5 @@ public class HelloController {
 
         return new RedirectView("/");
     }
-
-
 }
 
