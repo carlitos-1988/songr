@@ -1,9 +1,8 @@
 package com.songr.songr.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 //Step 1: @Entity to tell spring that this is a class for a database
 @Entity
@@ -18,6 +17,11 @@ public class Album {
     int songCount;
     int length;
     String imageUrl;
+
+
+    //Step for adding relationships
+    @OneToMany(mappedBy = "album",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<Song> songs;
 
     //Step 3: Add protected default constructor
     protected Album() {
@@ -61,5 +65,13 @@ public class Album {
 
     public long getId() {
         return id;
+    }
+
+    public List<Song> getSongs(){
+        return songs;
+    }
+
+    public void setSong(Song song){
+        songs.add(song);
     }
 }

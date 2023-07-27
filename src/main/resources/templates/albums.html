@@ -9,7 +9,7 @@
     <title>My Albums</title>
 </head>
 <body>
-
+<a href="/">Back to Home</a>
 <form action="/addAlbum" method="POST">
     <fieldset>
         <legend>ADD ALBUM</legend>
@@ -49,8 +49,11 @@
     <li th:text="'Song Count: '+ ${album.getSongCount}"></li>
     <li th:text="'Total time: '+ ${album.getLength}"></li>
     <img href=th:text=${album.getImageUrl} ></img>
-
+    <ol th:each="song: ${album.songs}">
+        <li th:if="${song.trackNumber}"></li>
+    </ol>
 </ul>
+
 
 <!--MR Garvey : "Son of a B**** it is case sensitive!-->
 <!--<h2 th:text="${Smiths.getTitle}"> AlbumName</h2>-->

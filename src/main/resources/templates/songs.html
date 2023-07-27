@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Display All Songs</title>
+</head>
+<body>
+
+<h1>List of All My Songs</h1>
+
+<form action="/addSong" method="POST">
+    <fieldset>
+        <legend>ADD Song</legend>
+        <label >Song Name:</label>
+        <input type="text" name="title" required><br>
+
+        <label >Song in Seconds:</label>
+        <input type="text"  name="songInSeconds" required><br>
+
+        <label >Track Number</label>
+        <input type="text"  name="trackNumber" required><br>
+
+        <label >Enter Album ID it belongs to</label>
+        <input type="text"  name="album" required><br>
+
+        <input type="submit" value="addSong">
+    </fieldset>
+</form>
+
+<form action="/deleteSong" method="POST">
+    <label >Enter Song ID to Delete</label>
+    <input type="text"  name="songDelete" ><br>
+
+    <input type="submit" value="Delete Song">
+</form>
+
+<ul th:each="song : ${songs}">
+    <li th:text="'Song ID: ' + ${song.getId}"></li>
+    <li th:text="'Song in Seconds:' +  ${song.getSongInSeconds}"></li>
+    <li th:text="'Track Number: ' + ${song.getTrackNumber}"></li>
+</ul>
+
+</body>
+</html>
